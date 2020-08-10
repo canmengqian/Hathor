@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: hysrix-dashbord
+server:
+  port: 8002
