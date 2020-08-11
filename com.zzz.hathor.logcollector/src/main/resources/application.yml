@@ -1,0 +1,11 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: logcollector
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+
+

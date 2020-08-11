@@ -1,0 +1,10 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: comsumer-note
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+

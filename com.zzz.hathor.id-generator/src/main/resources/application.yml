@@ -1,0 +1,9 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: id-gennerator
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000

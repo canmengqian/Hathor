@@ -1,0 +1,9 @@
+server:
+  port: 8006
+spring:
+  application:
+    name: mailSenderÓÊ¼ş·¢ËÍ
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
