@@ -3,6 +3,8 @@ package com.zzz.hathor.captcha.domain.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  *字典表
  */
@@ -21,9 +23,13 @@ public class DicDataInfo extends BaseInfo {
     @TableField
     private String desc ;
     @TableField
-    private Data createTime ;
-    @TableField
     private Boolean deprecated;
+    @TableField
+    private Date createTime ;
+    @TableField
+    private Date updateTime;
+
+
     @TableLogic(value = "0" ,delval = "1")
     private Boolean isDelete ;
 
