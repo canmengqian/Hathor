@@ -20,5 +20,5 @@ spring:
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:E:\sqlite\data\captcha.db
 mybatis-plus:
-  mapper-locations: classpath*:/com.zzz.hathor.captcha.mapper/**/*.xml
-  config-location: classpath*:/mybatis/mybatis-config.xml
+  mapper-locations: classpath*:/com/zzz/hathor/captcha/mapper/**/*.xml
+  config-location: classpath:/mybatis-config.xml

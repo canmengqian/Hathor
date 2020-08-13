@@ -1,5 +1,5 @@
 create table dic_data_info(
-    id INT PRIMARY KEY      NOT NULL,
+    id INT PRIMARY KEY     integer PRIMARY KEY autoincrement     ,
     key            CHAR(50) NOT NULL,
    value         CHAR(2000)     ,
    clazzName    CHAR(500) ,
