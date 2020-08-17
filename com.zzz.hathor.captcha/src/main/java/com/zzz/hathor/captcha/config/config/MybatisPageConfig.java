@@ -1,4 +1,4 @@
-package com.zzz.hathor.captcha.config;
+package com.zzz.hathor.captcha.config.config;
 
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.pagination.optimize.JsqlParserCountOptimize;

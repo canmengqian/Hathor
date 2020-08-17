@@ -1,4 +1,4 @@
-package com.zzz.hathor.captcha.config;
+package com.zzz.hathor.captcha.config.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.zzz.hathor.captcha.config;
+package com.zzz.hathor.captcha.config.config;
 
 import com.zzz.hathor.captcha.config.interceptor.LogCostInterceptor;
 import org.springframework.context.annotation.Configuration;

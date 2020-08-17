@@ -1,4 +1,4 @@
-package com.zzz.hathor.captcha.config;
+package com.zzz.hathor.captcha.config.config;
 
 import com.zzz.hathor.captcha.config.filter.LogCostFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
