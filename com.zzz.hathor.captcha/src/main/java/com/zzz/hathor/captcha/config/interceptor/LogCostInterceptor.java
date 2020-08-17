@@ -12,7 +12,7 @@ public class LogCostInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("拦截器预处理");
-        return false;
+        return true;
     }
 
     @Override

@@ -16,12 +16,13 @@ public class SimpleCaptchaImpl implements SimpleCaptcha {
     @Autowired
     private RedisTemplate redisTemplate;
     public OutputStream gennerCaptcha(CaptchaInfo info) {
+        return null;
 
 
     }
 
     public  Config loadConfig(CaptchaInfo info) {
-
+    return null;
     }
     public static void main(String[] args) {
         //Config config = new Config();

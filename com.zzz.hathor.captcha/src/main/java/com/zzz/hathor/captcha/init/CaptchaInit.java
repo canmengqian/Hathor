@@ -15,8 +15,8 @@ import java.util.List;
 @Order(10)
 @Slf4j
 public class CaptchaInit {
-    @Autowired
-    private RedisTemplate redisTemplate;
+    //@Autowired
+    //private RedisTemplate redisTemplate;
 
     @Autowired
     private DicDataMapper mapper;
@@ -26,7 +26,7 @@ public class CaptchaInit {
        log.info("当前的数据量："+rs.size());
        rs.stream().forEach(info -> {
            log.info(info.toString());
-           redisTemplate.opsForValue().set(info.getKey(),info);
+           //redisTemplate.opsForValue().set(info.getKey(),info);
        });
     }
 }

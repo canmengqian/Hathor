@@ -13,9 +13,9 @@ public class CatpchaRegistor {
     }
 
     public static void init() {
-        config.getProducerImpl();
+       /* config.getProducerImpl();
         config.getTextProducerImpl();
         config.getNoiseImpl();
-        config.
+        config.*/
     }
 }
