@@ -5,13 +5,17 @@ import com.google.code.kaptcha.util.Config;
 import java.util.HashMap;
 
 public class CatpchaRegistor {
-    private static HashMap<String,Object> produces ;
+    private  HashMap<String,Object> produces ;
 
     private Config config;
-    public CatpchaRegistor(config) {
+    public CatpchaRegistor(Config config) {
+        this.config = config;
     }
 
     public static void init() {
-
+        config.getProducerImpl();
+        config.getTextProducerImpl();
+        config.getNoiseImpl();
+        config.
     }
 }
