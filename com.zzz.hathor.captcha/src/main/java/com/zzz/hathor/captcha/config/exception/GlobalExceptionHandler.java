@@ -2,6 +2,7 @@ package com.zzz.hathor.captcha.config.exception;
 
 import com.zzz.hathor.captcha.domain.entity.BaseResponseBody;
 import com.zzz.hathor.captcha.util.SimpleResponseHandler;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -19,7 +20,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value =Exception.class)
     @ResponseBody
     public BaseResponseBody exceptionHandler(Exception e){
-        return SimpleResponseHandler.fail("500","内部服务器错误",e.getCause());
+        return SimpleResponseHandler.fail(HttpStatus.INTERNAL_SERVER_ERROR,e.getCause());
     }
 
 

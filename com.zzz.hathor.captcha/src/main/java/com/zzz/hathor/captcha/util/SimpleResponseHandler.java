@@ -5,12 +5,12 @@ import org.springframework.http.HttpStatus;
 
 /**
  * @ClassName SimplResponseHandler
- * @Description TODO
+ * @Description 响应结果处理器
  * @Author 25703
  * @Date 2020/8/18 17:55
  * @Version 1.0.0
  **/
-public class SimpleResponseHandler<T> {
+public class SimpleResponseHandler {
    public  static  BaseResponseBody fail(String code ,String msg) {
        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).build();
        return body;

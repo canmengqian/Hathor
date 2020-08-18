@@ -46,9 +46,12 @@ public class CaptchaController {
         ImageIO.write(bufferedImage,"png",os);
         os.flush();
         os.close();
+    }
 
+    @RequestMapping(value="/error")
+    @ApiOperation("获取图片-以ImageIO流形式写回")
+    public  void error()  {
 
-
-
+       throw  new NullPointerException();
     }
 }
