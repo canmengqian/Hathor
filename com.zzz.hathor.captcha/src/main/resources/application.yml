@@ -19,6 +19,13 @@ spring:
   datasource:
     driver-class-name: org.sqlite.JDBC
     url: jdbc:sqlite:E:\sqlite\data\captcha.db
+  messages:
+    basename: static/i18n/messages
 mybatis-plus:
   mapper-locations: classpath*:/com/zzz/hathor/captcha/mapper/**/*.xml
   config-location: classpath:/mybatis-config.xml
+#是否需要拉取服务信息，默认未true       fetchRegistry等同于 fetch-registry
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false

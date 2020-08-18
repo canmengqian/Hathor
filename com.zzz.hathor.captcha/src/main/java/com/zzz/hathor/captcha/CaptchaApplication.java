@@ -6,10 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan(basePackages={"com.zzz.hathor.captcha.mapper"})
-public class CaptchaApplication {
 
+public class CaptchaApplication {
     public static void main(String[] args) {
         SpringApplication.run(CaptchaApplication.class, args);
     }
-
 }
