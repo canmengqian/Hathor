@@ -1,5 +1,7 @@
 package com.zzz.hathor.captcha.domain.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.zzz.hathor.captcha.domain.Enum.VerifyResultEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiParam;
 import lombok.AllArgsConstructor;
@@ -34,6 +36,7 @@ public class CaptchaVerify {
     private String  pushtime;
 
     @ApiParam("验证结果")
-    private Enum result;
+    @JsonProperty(required = false)
+    private VerifyResultEnum result;
 
 }

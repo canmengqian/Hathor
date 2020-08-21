@@ -2,6 +2,7 @@ package com.zzz.hathor.captcha.service.impl;
 
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.LineCaptcha;
+import com.fasterxml.jackson.annotation.JacksonAnnotation;
 import com.zzz.hathor.captcha.domain.Enum.VerifyResultEnum;
 import com.zzz.hathor.captcha.domain.dto.CaptchaInfo;
 import com.zzz.hathor.captcha.domain.dto.CaptchaVerify;
@@ -28,8 +29,7 @@ public class ImageCapchaServiceImpl implements CaptchaService {
     @Override
     public CaptchaVerify verifyCode(CaptchaVerify info) {
         CaptchaVerify result;
-        CaptchaInfo rs = (CaptchaInfo) redisTemplate.opsForValue().get(info.getToken());
-        String value = rs.getProducer();
+       String value= (String) redisTemplate.opsForValue().get(info.getToken());
         if(value!= null) {
             result= CaptchaVerify.builder()
                     .correctCode(value).answer(info.getAnswer())
