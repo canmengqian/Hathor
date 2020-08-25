@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
+
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
@@ -19,10 +20,9 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
  **/
 @Configuration
 public class RoutingConfiguration {
-    @Autowired
-    private UserHandler userHandler;
+
     @Bean
-    public RouterFunction<ServerResponse> routerFunction() {
-        return (RouterFunction<ServerResponse>) route(GET("/webflux/user/{userId}"), userHandler::getUserById);
+    public RouterFunction<ServerResponse> routerFunction(UserHandler userHandler) {
+        return  route(GET("/webflux/user/{userId}"), userHandler::getUserById);
     }
 }

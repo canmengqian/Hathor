@@ -3,8 +3,9 @@ package com.zzz.hathor.captcha.webflux.handler;
 import com.zzz.hathor.captcha.webflux.domain.bean.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.function.ServerRequest;
-import org.springframework.web.servlet.function.ServerResponse;
+import org.springframework.web.reactive.function.server.ServerRequest;
+import org.springframework.web.reactive.function.server.ServerResponse;
+
 import reactor.core.publisher.Mono;
 
 /**
@@ -20,8 +21,7 @@ public class UserHandler {
 
 
     public Mono<ServerResponse> getUserById(ServerRequest serverRequest) {
-        return (Mono<ServerResponse>) ServerResponse.status(HttpStatus.OK)
-                .body(Mono.just(new User()));
+        return ServerResponse.status(HttpStatus.OK) .body(null);
     }
 
 
