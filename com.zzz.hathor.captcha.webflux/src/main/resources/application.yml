@@ -16,6 +16,8 @@ spring:
         max-wait: 100ms
         min-idle: 2
       shutdown-timeout: 100ms
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     fetch-registry: false

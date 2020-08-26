@@ -3,6 +3,7 @@ package com.zzz.hathor.captcha.webflux.handler;
 import com.zzz.hathor.captcha.webflux.domain.bean.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
@@ -15,13 +16,13 @@ import reactor.core.publisher.Mono;
  * @Date 2020/8/25 18:46
  * @Version 1.0.0
  **/
-@Component
+@RestController
 public class UserHandler {
 
 
 
     public Mono<ServerResponse> getUserById(ServerRequest serverRequest) {
-        return ServerResponse.status(HttpStatus.OK) .body(null);
+        return ServerResponse.status(HttpStatus.OK) .body(Mono.just(User.builder().age("24").name("zhangsan").build()),User.class);
     }
 
 

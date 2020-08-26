@@ -23,6 +23,6 @@ public class RoutingConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction(UserHandler userHandler) {
-        return  route(GET("/webflux/user/{userId}"), userHandler::getUserById);
+        return  route(GET("/webflux/user"), userHandler::getUserById);
     }
 }
