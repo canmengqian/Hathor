@@ -9,7 +9,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 //@ComponentScan(basePackages = {"com.zzz.hathor.captcha"})
-//@EnableWebFlux
+@EnableWebFlux
 public class WebfluxApplication {
 
     public static void main(String[] args) throws IOException {

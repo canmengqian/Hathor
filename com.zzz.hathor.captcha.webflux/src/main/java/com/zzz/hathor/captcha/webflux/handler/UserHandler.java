@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
  * @Date 2020/8/25 18:46
  * @Version 1.0.0
  **/
-@RestController
+@Component
 public class UserHandler {
 
 

@@ -20,9 +20,10 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
  **/
 @Configuration
 public class RoutingConfiguration {
-
+    @Autowired
+    UserHandler userHandler;
     @Bean
-    public RouterFunction<ServerResponse> routerFunction(UserHandler userHandler) {
+    public RouterFunction<ServerResponse> routerFunction() {
         return  route(GET("/webflux/user"), userHandler::getUserById);
     }
 }
