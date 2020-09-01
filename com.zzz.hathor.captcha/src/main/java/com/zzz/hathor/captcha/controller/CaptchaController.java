@@ -3,7 +3,12 @@ package com.zzz.hathor.captcha.controller;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+
+import com.zzz.hathor.cache.util.anotation.ExpireType;
+import com.zzz.hathor.cache.util.anotation.Resources;
+import com.zzz.hathor.cache.util.anotation.SimpleCache;
 import com.zzz.hathor.captcha.common.constant.AppServiceConstant;
+import com.zzz.hathor.captcha.config.config.RestRequestHelper;
 import com.zzz.hathor.captcha.domain.dto.CaptchaInfo;
 import com.zzz.hathor.captcha.domain.dto.CaptchaVerify;
 import com.zzz.hathor.captcha.domain.entity.BaseResponseBody;
@@ -18,12 +23,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.concurrent.TimeUnit;
 
 @RequestMapping("captcha")
 @RestController
@@ -36,6 +43,9 @@ public class CaptchaController {
     private HttpServletResponse response;
 
     @RequestMapping(value = "/query",method= RequestMethod.GET)
+    @RestRequestHelper
+    @SimpleCache(expireTime=10,key="marketExponent",policy= ExpireType.TIME,unit= TimeUnit.DAYS,
+            resources=@Resources(repository = Object.class,method="querymarketExponent"))
     public  String captcha() {
      return   MessageUtil.get("username.login.error");
     }

@@ -3,14 +3,15 @@ package com.zzz.hathor.cache.config;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.Collection;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import com.zzz.hathor.cache.util.anotation.ExpireType;
 import com.zzz.hathor.cache.util.anotation.SimpleCache;
+import com.zzz.hathor.cache.util.cache.TTLCache;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -21,6 +22,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 
@@ -32,12 +34,12 @@ public class SimpleCacheAspect {
  
   @Pointcut("@annotation(com.zzz.hathor.cache.util.anotation.SimpleCache)")
   private void pointcut() {
-	 // 	System.out.println("进入连接点");
+
   }
 
   @Before(value = "pointcut() && @annotation(cache)")
   public Object before(ProceedingJoinPoint point, SimpleCache cache) {
-		//System.out.println("进入连接点");
+	  System.out.println("进入连接。。。。。。。。。。。。");
 	 Object[] objs =  point.getArgs();
 	return objs;
 	  
@@ -54,24 +56,28 @@ public class SimpleCacheAspect {
    */
   @AfterReturning(value = "pointcut() && @annotation(cache)", returning = "result")
   public Object afterReturning(JoinPoint joinPoint, SimpleCache cache, Object result) {
-      //System.out.println("执行了afterReturning方法: result=" + result);
-	  //AJAXUtil.success(response, msg);
       return Void.class;
   }
 
-  @Around(value = "pointcut() &&  @annotation(cache)")
+    @Around("@annotation(restRequestHelper)")
+    public Object process(ProceedingJoinPoint pjp,SimpleCache cache) {
+        //do something
+        System.out.println("hello............................");
+        return restRequestHelper;
+    }
+
+  //@Around(value = "pointcut() &&  @annotation(cache)")
   public Object around(ProceedingJoinPoint point, SimpleCache cache) {
-	  System.out.println("进入切面");
 	  HashMap<String,Object> paramValue  = resolveMethodParam(point);
 	  Object result = null;
 	  String key = cache.key();
 	  boolean is_exist_key =false;
 	  if(key!=null || key.trim()!="") {
 		  evictKey(cache);
-		  is_exist_key = SimpleCache.getCache().isExist(key);
+		  is_exist_key =  TTLCache.getCache().isExist(key);
 		
 		if(is_exist_key) {
-			result = SimpleCache.getCache().get(key);
+			result = TTLCache.getCache().get(key);
 		}
 	  }
 	  if(result == null ) {
@@ -87,7 +93,7 @@ public class SimpleCacheAspect {
 	try {
 		rs=bean.getClass().getDeclaredMethod(cache.resources().method(), null).invoke(bean, null);
 		if (rs!= null ) {
-			SimpleCache.getCache().put(cache.key(),rs);
+			TTLCache.getCache().put(cache.key(),rs);
 		}
 	} catch (IllegalAccessException e) {
 		// TODO Auto-generated catch block
@@ -147,7 +153,7 @@ public class SimpleCacheAspect {
   }
   
   public void evictKey(SimpleCache cache) {
-	 SimpleCache<String, Object> cacheComp= SimpleCache.getCache();
+	  TTLCache cacheComp= TTLCache.getCache();
 	  ExpireType type = cache.policy();
 	  switch (type.getType()) {
 		case "TIME":

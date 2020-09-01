@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class SimpleCache<K,V> {
+public class TTLCache<K,V> {
 	private  ConcurrentHashMap<? super K, ? super V> cachePools;
 	
 	private Integer initCapcity = 16;
@@ -21,12 +21,12 @@ public class SimpleCache<K,V> {
 	
 	private TimeUnit timeUnit;
 	
-	private volatile static SimpleCache cache ;
+	private volatile static TTLCache cache ;
 	
 	private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);  
 	
-	public static <K1 ,V1> SimpleCache<K1,V1> newBuilder() {
-		return new SimpleCache<>();
+	public static <K1 ,V1> TTLCache<K1,V1> newBuilder() {
+		return new TTLCache<>();
 	}
 	
 	
@@ -38,17 +38,17 @@ public class SimpleCache<K,V> {
 		cachePools.put(k, v);
 	}
 	
-	public SimpleCache<K,V> initCapcity(int initsize) {
+	public TTLCache<K,V> initCapcity(int initsize) {
 		this.initCapcity = initsize;
 		return this;
 	}
 	
-	public SimpleCache<K,V> maxSize(int maxsize) {
+	public TTLCache<K,V> maxSize(int maxsize) {
 		this.maxElements = maxsize;
 		return this;
 	}
 	
-	public synchronized <K,V> SimpleCache<K,V> build () {
+	public synchronized <K,V> TTLCache<K,V> build () {
 		if(evictKeys==null) {
 			this.evictKeys = new HashMap<>();
 		}
@@ -69,7 +69,7 @@ public class SimpleCache<K,V> {
 		return cachePools.containsKey(k);
 	}
 	
-	public synchronized SimpleCache<K,V> evict(K k , long expireTime , TimeUnit timeUnit) {
+	public synchronized TTLCache<K,V> evict(K k , long expireTime , TimeUnit timeUnit) {
 		
 		EvictKey<K> key = new EvictKey<>(k,expireTime,timeUnit);
 		evictKeys.put(k, key);
@@ -84,7 +84,7 @@ public class SimpleCache<K,V> {
 		
 	}
 	
-	public static <K, V> SimpleCache<K, V> getCache() {
+	public static <K, V> TTLCache<K, V> getCache() {
 		return cache;
 	}
 	
@@ -94,7 +94,7 @@ public class SimpleCache<K,V> {
 		cache=null;
 	}
 	public static void main(String[] args) {
-		SimpleCache<String, String > cache = SimpleCache.newBuilder().maxSize(10)
+		TTLCache<String, String > cache = TTLCache.newBuilder().maxSize(10)
 												.initCapcity(10).evict("1",10, TimeUnit.MINUTES)
                                 					.evict("2", 100, TimeUnit.SECONDS).build();
 		cache.put("1", "张三");
@@ -109,7 +109,7 @@ public class SimpleCache<K,V> {
 		
 		private HashMap<K, EvictKey<K>> evictKeys ;
 
-		public EvictThread(SimpleCache<K,V> cache) {
+		public EvictThread(TTLCache<K,V> cache) {
 
 			super();
 			this.cachePools = cache.cachePools;
