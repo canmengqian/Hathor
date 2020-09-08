@@ -1,4 +1,4 @@
-package com.zzz.hathor.captcha.domain.entity;
+package com.zzz.hathor.base.web.http;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

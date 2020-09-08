@@ -143,8 +143,8 @@
             <version>2.0.2</version>
         </dependency>
         <dependency>
-            <groupId>com.zzz.hathor</groupId>
-            <artifactId>cache</artifactId>
+            <groupId>com.zzz.hathor.base</groupId>
+            <artifactId>web</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

@@ -1,5 +1,6 @@
 package com.zzz.hathor.captcha.util;
 
+import com.zzz.hathor.base.web.http.BaseResponseBody;
 import com.zzz.hathor.captcha.domain.entity.BaseResponseBody;
 import org.springframework.http.HttpStatus;
 
