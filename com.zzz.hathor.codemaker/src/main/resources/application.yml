@@ -1,0 +1,26 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: code-maker
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+code:
+  maker:
+    datasource:
+      username: root
+      password: root
+      url:  http://localhost:8000
+      drivername: heelo
+    architec:
+      controllerpck: controller
+      servicepck: service
+      daosuffix: mapper
+      domainpck: domain
+    project:
+      author: zhengzz
+      name: demo
+      modulename: com.zzz.hathor
+      desc: demo

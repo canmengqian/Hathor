@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.zzz.hathor.base.codemaker.config.CodemakerAutoConfiguration
