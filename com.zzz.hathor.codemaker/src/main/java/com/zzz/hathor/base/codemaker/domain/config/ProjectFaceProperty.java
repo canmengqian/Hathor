@@ -17,6 +17,15 @@ public class ProjectFaceProperty {
     private  String desc ;  //项目描述
     private  String author ; //作者
     private  String modulename ; //包路径
+    private  boolean permitlombok = false;
+
+    public boolean isPermitlombok() {
+        return permitlombok;
+    }
+
+    public void setPermitlombok(boolean permitlombok) {
+        this.permitlombok = permitlombok;
+    }
 
     public ProjectFaceProperty() {
     }

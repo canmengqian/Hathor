@@ -19,8 +19,10 @@ code:
       servicepck: service
       daosuffix: mapper
       domainpck: domain
+      orm-type: mybatisplus
     project:
       author: zhengzz
       name: demo
       modulename: com.zzz.hathor
       desc: demo
+      permitlombok: false

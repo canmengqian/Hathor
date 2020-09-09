@@ -1,6 +1,7 @@
 package com.zzz.hathor.base.codemaker.domain.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -19,6 +20,7 @@ public class ArchitectureProperty {
     private String servicesuffix ;
     private String controllersuffix;
     private String daosuffix;
+    private OrmType ormType = OrmType.MYBATISPLUS;
 
     private String servicepck;
     private String controllerpck;
@@ -33,6 +35,7 @@ public class ArchitectureProperty {
     }
 
     public void setServicesuffix(String servicesuffix) {
+
         this.servicesuffix = servicesuffix;
     }
 
@@ -82,5 +85,13 @@ public class ArchitectureProperty {
 
     public void setDomainmapping(String[] domainmapping) {
         this.domainmapping = domainmapping;
+    }
+
+    public OrmType getOrmType() {
+        return ormType;
+    }
+
+    public void setOrmType(OrmType ormType) {
+        this.ormType = ormType;
     }
 }
