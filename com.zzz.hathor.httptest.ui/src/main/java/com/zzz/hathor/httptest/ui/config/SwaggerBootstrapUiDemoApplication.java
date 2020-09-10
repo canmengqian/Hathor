@@ -1,6 +1,5 @@
-package com.zzz.hathor.captcha.config.config;
+package com.zzz.hathor.httptest.ui.config;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
