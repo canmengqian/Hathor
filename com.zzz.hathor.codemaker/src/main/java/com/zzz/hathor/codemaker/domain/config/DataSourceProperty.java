@@ -18,12 +18,22 @@ public class DataSourceProperty {
     private  String url;
     private String username ;
     private String password ;
+    private ProviderVenderEnum vender;
 
-    public DataSourceProperty(String drivername, String url, String username, String password) {
+    public DataSourceProperty(String drivername, String url, String username, String password, ProviderVenderEnum vender) {
         this.drivername = drivername;
         this.url = url;
         this.username = username;
         this.password = password;
+        this.vender = vender;
+    }
+
+    public ProviderVenderEnum getVender() {
+        return vender;
+    }
+
+    public void setVender(ProviderVenderEnum vender) {
+        this.vender = vender;
     }
 
     public DataSourceProperty() {

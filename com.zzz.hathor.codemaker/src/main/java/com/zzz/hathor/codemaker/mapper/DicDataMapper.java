@@ -2,7 +2,7 @@ package com.zzz.hathor.codemaker.mapper;
 
 
 import com.zzz.hathor.codemaker.domain.entity.DicDataInfo;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface DicDataMapper {
 
+    @Transactional
     public List<DicDataInfo> queryByCondition();
 }

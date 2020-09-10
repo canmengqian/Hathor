@@ -65,14 +65,10 @@ public class MybatisConfig {
     public SqlSessionFactoryBean createSqlSessionFactoryBean(@Qualifier("hikarysource") DataSource dataSource) throws SQLException, IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
-
-        ResourcePatternResolver resourcePatternResolver = new PathMatchingResourcePatternResolver();
-       Resource[] resources= resourcePatternResolver.getResources("classpath:/*-Mapper.xml");
-        System.out.println(resources.length);
-       for (Resource rs :resources ) {
-           System.out.println(rs.getFilename());
-       }
-        sqlSessionFactoryBean.setMapperLocations(resourcePatternResolver.getResources("classpath:*-Mapper.xml"));
+        String locationPattern = "classpath*:/com/zzz/hathor/codemaker/mapper/*-Mapper.xml";
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(new PathMatchingResourcePatternResolver());
+        Resource[] resources = resolver.getResources(locationPattern);
+        sqlSessionFactoryBean.setMapperLocations(resources);
         return  sqlSessionFactoryBean;
     }
    @Bean("MapperScannerConfigurer")

@@ -1,5 +1,6 @@
 package com.zzz.hathor.codemaker.domain.vo.query;
 
+import com.zzz.hathor.codemaker.domain.config.ProviderVenderEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,11 +19,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DataSourceInfo {
-    private  String drivername ;
+public class DataSourceInfoQuery {
     private  String url;
     private String username ;
     private String password ;
-
+    private ProviderVenderEnum vender;
     private List<String> tables;
 }

@@ -21,4 +21,5 @@ import org.springframework.stereotype.Component;
 public class TableModel {
     private String tableName;
     private  String tableComment ;
+    private String sql;
 }
