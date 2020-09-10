@@ -17,5 +17,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class DomainInfo {
-    private String servicepck;
+    private  boolean mustgenner;
+    private String domainsuffix ;
+    private String domainpck;
+    private String[] subDomain;
 }

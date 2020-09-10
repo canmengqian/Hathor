@@ -17,5 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ControllerInfo {
+    private String  controllersuffix ;
+    private String controllerpck;
     private  boolean mustgenner;
 }

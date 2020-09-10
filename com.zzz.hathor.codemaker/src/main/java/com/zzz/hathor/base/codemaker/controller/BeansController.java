@@ -1,5 +1,6 @@
 package com.zzz.hathor.base.codemaker.controller;
 
+import com.zzz.hathor.base.codemaker.domain.vo.query.ProjectGennerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +23,12 @@ import java.util.List;
 public class BeansController {
     @Resource
     ApplicationContext context;
+
+    @Autowired
+   ProjectGennerInfo ProjectGennerInfo;
     @RequestMapping(value = "/query")
-    public List<String> queryBeans() {
-        return Arrays.asList(context.getBeanDefinitionNames());
+    public ProjectGennerInfo queryBeans(final ProjectGennerInfo request) {
+        ProjectGennerInfo = request;
+        return ProjectGennerInfo;
     }
 }

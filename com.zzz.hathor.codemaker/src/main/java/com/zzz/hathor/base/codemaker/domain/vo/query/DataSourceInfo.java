@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -20,13 +19,9 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class DataSourceInfo {
-    @NotNull
     private  String drivername ;
-    @NotNull
     private  String url;
-    @NotNull
     private String username ;
-    @NotNull
     private String password ;
 
     private List<String> tables;

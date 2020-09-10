@@ -18,6 +18,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class DaoInfo {
     private  boolean mustgenner;
-    private String  servicesuffix ;
-    private String servicepck;
+    private String  daosuffix ;
+    private String daopck;
 }
