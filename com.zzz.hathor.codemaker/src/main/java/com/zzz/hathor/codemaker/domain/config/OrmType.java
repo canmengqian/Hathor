@@ -1,4 +1,4 @@
-package com.zzz.hathor.base.codemaker.domain.config;
+package com.zzz.hathor.codemaker.domain.config;
 
 public enum OrmType {
     MYBATIS("mybatis"),

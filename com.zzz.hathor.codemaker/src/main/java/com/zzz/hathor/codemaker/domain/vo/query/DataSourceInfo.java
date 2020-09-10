@@ -1,4 +1,4 @@
-package com.zzz.hathor.base.codemaker.domain.vo.query;
+package com.zzz.hathor.codemaker.domain.vo.query;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

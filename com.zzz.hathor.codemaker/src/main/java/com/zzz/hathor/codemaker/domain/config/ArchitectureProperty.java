@@ -1,11 +1,7 @@
-package com.zzz.hathor.base.codemaker.domain.config;
+package com.zzz.hathor.codemaker.domain.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @ClassName ArchitectureProperty

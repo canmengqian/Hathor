@@ -7,13 +7,12 @@ spring:
     admin:
       client:
         url: http://localhost:8000
+
 code:
   maker:
     datasource:
-      username: root
-      password: root
-      url:  http://localhost:8000
-      drivername: heelo
+      url:  jdbc:sqlite:E:\sqlite\data\captcha.db
+      drivername: org.sqlite.JDBC
     architec:
       controllerpck: controller
       servicepck: service
@@ -26,3 +25,5 @@ code:
       modulename: com.zzz.hathor
       desc: demo
       permitlombok: false
+mybatis:
+  mapper-locations: classpath:com/zzz/hathor/codemaker/mapper/*.xml

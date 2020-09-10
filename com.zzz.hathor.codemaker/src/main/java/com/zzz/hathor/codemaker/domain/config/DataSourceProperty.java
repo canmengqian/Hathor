@@ -1,4 +1,4 @@
-package com.zzz.hathor.base.codemaker.domain.config;
+package com.zzz.hathor.codemaker.domain.config;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
