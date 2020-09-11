@@ -3,9 +3,7 @@ package com.zzz.hathor.codemaker.util;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 
-import java.util.HashSet;
-import java.util.Queue;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.concurrent.SynchronousQueue;
 
 /**
@@ -18,7 +16,7 @@ import java.util.concurrent.SynchronousQueue;
 public class SpringSqlSessionFacoryNamesCache {
     private final static int INIT_SIZE = 0;
     private static int maxSize = 10;
-    private static Queue factoryBeanIds =new SynchronousQueue();
+    private static Queue factoryBeanIds =new LinkedList();
 
     ListableBeanFactory beanFactory;
 
@@ -35,5 +33,9 @@ public class SpringSqlSessionFacoryNamesCache {
 
     public static  String removeNmae(String name ) {
        return (String) factoryBeanIds.poll();
+    }
+
+    public static List<Object> getAllName() {
+        return Arrays.asList(factoryBeanIds.toArray());
     }
 }

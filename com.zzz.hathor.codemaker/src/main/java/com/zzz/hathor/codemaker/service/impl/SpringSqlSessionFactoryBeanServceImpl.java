@@ -1,15 +1,19 @@
 package com.zzz.hathor.codemaker.service.impl;
 
+import cn.hutool.core.codec.Base64;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zzz.hathor.codemaker.domain.vo.query.DataSourceInfoQuery;
 import com.zzz.hathor.codemaker.service.SpringSqlSessionFactoryBeanService;
+import com.zzz.hathor.codemaker.util.SpringSqlSessionFacoryNamesCache;
 import com.zzz.hathor.codemaker.util.SpringSqlSessionFactoryRefresher;
 import com.zzz.hathor.codemaker.util.driver.DriverRegistry;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -23,7 +27,6 @@ import javax.sql.DataSource;
  **/
 @Service
 public class SpringSqlSessionFactoryBeanServceImpl implements SpringSqlSessionFactoryBeanService {
-
 
     @Resource
     ApplicationContext context;
@@ -55,13 +58,23 @@ public class SpringSqlSessionFactoryBeanServceImpl implements SpringSqlSessionFa
     }
 
     private String setBeanName(DataSourceInfoQuery dataSourceInfoQuery) {
-        StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder("SqlSessionFactoryBean@");
         builder.append(dataSourceInfoQuery.getVender());
-        builder.append("_");
+        builder.append("@");
         builder.append(dataSourceInfoQuery.getUrl());
-        builder.append("_");
-        builder.append(dataSourceInfoQuery.getUsername());
-        return  builder.toString();
+        builder.append("@");
+        String userName = dataSourceInfoQuery.getUsername();
+        if(!StringUtils.isEmpty(userName)) {
+            builder.append(userName);
+        }
+        String beanName = Base64.encode(builder.toString());
+        SpringSqlSessionFacoryNamesCache.addName(beanName);
+        return beanName;
+    }
 
+    public void getMapper(String beanName) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = (SqlSessionFactoryBean) context.getBean(beanName);
+        SqlSessionFactory  factory =sqlSessionFactoryBean.getObject();
+        //factory.openSession()
     }
 }

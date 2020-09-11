@@ -1,5 +1,6 @@
 package com.zzz.hathor.codemaker.util;
 
+import org.apache.logging.log4j.spi.ObjectThreadContextMap;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -50,6 +51,7 @@ public class SpringSqlSessionFactoryRefresher {
        registry.registerBeanDefinition(beanName,definition);
 
    }
+
 
    /**
     * 获取所有属性值

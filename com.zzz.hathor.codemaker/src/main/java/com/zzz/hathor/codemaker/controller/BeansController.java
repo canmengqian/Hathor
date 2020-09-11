@@ -5,6 +5,7 @@ import com.zzz.hathor.base.web.http.SimpleResponseHandler;
 import com.zzz.hathor.codemaker.domain.vo.query.DataSourceInfoQuery;
 import com.zzz.hathor.codemaker.domain.vo.query.ProjectGennerInfo;
 import com.zzz.hathor.codemaker.service.SpringSqlSessionFactoryBeanService;
+import com.zzz.hathor.codemaker.util.SpringSqlSessionFacoryNamesCache;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -45,6 +46,10 @@ public class BeansController {
     @GetMapping(value = "/query/all")
     public BaseResponseBody<List<String>> queryBeans() {
      return   SimpleResponseHandler.success(HttpStatus.OK,Arrays.asList(context.getBeanDefinitionNames()));
+    }
+    @GetMapping(value = "/query/sqlsessionfactorybean")
+    public  BaseResponseBody<List<Object>> querySqlSessionFactoryBeans() {
+        return   SimpleResponseHandler.success(HttpStatus.OK,Arrays.asList(SpringSqlSessionFacoryNamesCache.getAllName()));
     }
     @PutMapping(value = "/add/")
     public BaseResponseBody refreshBean(DataSourceInfoQuery query) {
