@@ -13,6 +13,7 @@ code:
     datasource:
       url:  jdbc:sqlite:E:\sqlite\data\captcha.db
       drivername: org.sqlite.JDBC
+      vender: sqlite
     architec:
       controllerpck: controller
       servicepck: service

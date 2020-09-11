@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 
 /**
  * @ClassName SqlSessionJudgeServiceImpl
@@ -17,9 +18,16 @@ public class SqlSessionJudgeServiceImpl implements SqlSessionJudgeService {
     @Autowired
     @Qualifier("sqlSessionFactoryBean")
     private SqlSessionFactoryBean factoryBean;
+
+    @Autowired
+    ApplicationContext context;
     @Override
-    public SqlSession judgeSqlSession(String vender) {
-   //factoryBean.getObject().
-        return null;
+    public SqlSessionFactoryBean createSqlSessionFactoryBean(String databaseId) {
+        SqlSessionFactoryBean factoryBean;
+       boolean isExist =  context.containsBean(databaseId);
+       if(isExist) {
+           factoryBean= (SqlSessionFactoryBean) context.getBean(databaseId);
+       }
+       return  null;
     }
 }

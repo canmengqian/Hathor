@@ -1,0 +1,26 @@
+```mermaid
+sequenceDiagram
+    participant Controller
+    participant Service
+    participant Manager
+    participant Mapper
+    participant Spring
+    participant DB
+    Note left of Service:数据库URL,userName，<br/>pwd,vender
+    Controller->>Service:1.1 checkValid() 
+    Service-->>Controller: 
+    Service->>Manager:1.2.1 检查是否在缓存中存在
+    Manager-->>Service: 工厂对象
+    Manager-->>Spring: 1.2.2 读取spring中的bean
+    Spring-->> Service: 
+    Manager-->>Spring:1.3创建BeanDefinition
+    Manager-->>DB:1.3.1写入DB
+    Service->>Manager: 获取Mapper对象
+    Manager-->>Service: 
+    Service->>Mapper:查询表数据
+    Mapper-->>Service: Result
+    Service-->> Controller:Result
+
+    
+```
+

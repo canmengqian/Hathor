@@ -5,7 +5,7 @@ public enum ProviderVenderEnum {
     MYSQL("MYSQL"),
     ORACLE("ORACLE"),
     H2("H2");
-    private String vender;
+    public String vender;
 
     ProviderVenderEnum(String vender) {
         this.vender = vender;

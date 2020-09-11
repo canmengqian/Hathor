@@ -1,6 +1,7 @@
 package com.zzz.hathor.codemaker.service;
 
 import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionFactoryBean;
 
 /**
  * @ClassName SqlSessionJudgeService
@@ -10,5 +11,5 @@ import org.apache.ibatis.session.SqlSession;
  * @Version 1.0.0
  **/
 public interface SqlSessionJudgeService {
-    public SqlSession judgeSqlSession(String vender);
+    SqlSessionFactoryBean createSqlSessionFactoryBean(String databaseId);
 }

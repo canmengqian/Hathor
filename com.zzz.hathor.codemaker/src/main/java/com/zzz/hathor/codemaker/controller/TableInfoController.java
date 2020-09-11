@@ -35,13 +35,7 @@ public class TableInfoController {
     ApplicationContext context;
     @GetMapping("/query/info")
     public BaseResponseBody<List<TableModel>> queryTable(final DataSourceInfoQuery dataSourceInfoQuery) throws Exception {
-       // SpringSqlSessionFactoryRegistry.addSqlSessionFactoryBean((AbstractRefreshableApplicationContext) context,"bean1",new SqlSessionFactoryBean());
-        BeanDefinitionRegistry registry = (BeanDefinitionRegistry) context;
-        BeanDefinition beanDefinition = new AnnotatedGenericBeanDefinition(SqlSessionFactoryBean.class);
-        BeanDefinitionBuilder builder =  BeanDefinitionBuilder.genericBeanDefinition(SqlSessionFactoryBean.class);
-        beanDefinition=builder.getBeanDefinition();
-        registry.registerBeanDefinition("bean1",beanDefinition);
-        context.getBean("bean1");
+
         return null;
     }
 }

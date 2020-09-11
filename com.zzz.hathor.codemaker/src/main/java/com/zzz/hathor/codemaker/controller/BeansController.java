@@ -2,7 +2,9 @@ package com.zzz.hathor.codemaker.controller;
 
 import com.zzz.hathor.base.web.http.BaseResponseBody;
 import com.zzz.hathor.base.web.http.SimpleResponseHandler;
+import com.zzz.hathor.codemaker.domain.vo.query.DataSourceInfoQuery;
 import com.zzz.hathor.codemaker.domain.vo.query.ProjectGennerInfo;
+import com.zzz.hathor.codemaker.service.SpringSqlSessionFactoryBeanService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -36,24 +38,17 @@ public class BeansController {
     @Resource
     ApplicationContext context;
 
-    @Resource
-    BeanFactory beanFactory;
+    @Autowired
+    SpringSqlSessionFactoryBeanService factoryBeanService;
     @Autowired
    ProjectGennerInfo ProjectGennerInfo;
     @GetMapping(value = "/query/all")
     public BaseResponseBody<List<String>> queryBeans() {
      return   SimpleResponseHandler.success(HttpStatus.OK,Arrays.asList(context.getBeanDefinitionNames()));
     }
-    @PutMapping(value = "/refresh/{name}")
-    public BaseResponseBody refreshBean(@PathVariable(value = "name") final String beanName) {
-
-        DefaultListableBeanFactory listableBeanFactory  = (DefaultListableBeanFactory) beanFactory;
-        boolean singleBean = listableBeanFactory.containsBeanDefinition(beanName) ;
-        if(singleBean) {
-            BeanDefinition definition = listableBeanFactory.getBeanDefinition(beanName);
-            listableBeanFactory.registerBeanDefinition(beanName,definition);// 重新注册
-        }
-
+    @PutMapping(value = "/add/")
+    public BaseResponseBody refreshBean(DataSourceInfoQuery query) {
+        factoryBeanService.assemberSqlSessionFactoryBean(query);
         return  SimpleResponseHandler.success(HttpStatus.OK,"OK");
     }
    /* @PutMapping(value = "/refresh/all")
