@@ -1,13 +1,13 @@
 package com.zzz.hathor.captcha.controller;
 
 import com.zzz.hathor.base.web.http.BaseResponseBody;
+import com.zzz.hathor.base.web.http.SimpleResponseHandler;
 import com.zzz.hathor.captcha.common.constant.AppServiceConstant;
 import com.zzz.hathor.captcha.config.config.RestRequestHelper;
 import com.zzz.hathor.captcha.domain.dto.CaptchaInfo;
 import com.zzz.hathor.captcha.domain.dto.CaptchaVerify;
 import com.zzz.hathor.captcha.service.impl.ImageCapchaServiceImpl;
 import com.zzz.hathor.captcha.util.MessageUtil;
-import com.zzz.hathor.captcha.util.SimpleResponseHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 @RequestMapping("captcha")
 @RestController
@@ -41,6 +43,7 @@ public class CaptchaController {
     @RequestMapping(value="/image",method= RequestMethod.GET )
     @ApiOperation("获取图片")
     public  void imageCaptcha( CaptchaInfo info) throws IOException {
+        String string = new String();
         response.setContentType("image/png");
         BufferedImage bufferedImage = service.getCaptcha(info);
         OutputStream os =response.getOutputStream();
@@ -63,4 +66,6 @@ public class CaptchaController {
         CaptchaVerify verifyResult = service.verifyCode(verify);
         return SimpleResponseHandler.success(HttpStatus.OK,resp.builder().t(verifyResult).code("200").message("验证成功").build());
     }
+
+
 }

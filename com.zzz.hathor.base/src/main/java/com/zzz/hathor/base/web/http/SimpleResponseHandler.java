@@ -1,7 +1,5 @@
-package com.zzz.hathor.captcha.util;
+package com.zzz.hathor.base.web.http;
 
-import com.zzz.hathor.base.web.http.BaseResponseBody;
-import com.zzz.hathor.captcha.domain.entity.BaseResponseBody;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -18,18 +16,18 @@ public class SimpleResponseHandler {
    }
 
    public static BaseResponseBody fail(String code, String msg, Object  result) {
-       BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).t(result).build();
+       BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).data(result).build();
        return  body;
    }
 
 
     public static BaseResponseBody fail(String code ,String msg ,Throwable throwable) {
-        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).t(throwable.getMessage()).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).data(throwable.getMessage()).build();
         return  body;
     }
 
     public static BaseResponseBody fail(HttpStatus status, Object  result) {
-        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).t(result).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).data(result).build();
         return body;
     }
 
@@ -39,12 +37,12 @@ public class SimpleResponseHandler {
     }
 
     public static BaseResponseBody success(String code ,String msg,Object  result) {
-        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).t(result).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).data(result).build();
         return body;
     }
 
     public static BaseResponseBody success(HttpStatus status, Object  result) {
-        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).t(result).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).data(result).build();
         return body;
     }
 

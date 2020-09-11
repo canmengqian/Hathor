@@ -59,12 +59,12 @@ public class SimpleCacheAspect {
       return Void.class;
   }
 
-    @Around("@annotation(restRequestHelper)")
+   /* @Around("@annotation(cache)")
     public Object process(ProceedingJoinPoint pjp,SimpleCache cache) {
         //do something
         System.out.println("hello............................");
-        return restRequestHelper;
-    }
+        //return restRequestHelper;
+    }*/
 
   //@Around(value = "pointcut() &&  @annotation(cache)")
   public Object around(ProceedingJoinPoint point, SimpleCache cache) {

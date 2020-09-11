@@ -1,7 +1,7 @@
 package com.zzz.hathor.captcha.config.exception;
 
-import com.zzz.hathor.captcha.domain.entity.BaseResponseBody;
-import com.zzz.hathor.captcha.util.SimpleResponseHandler;
+import com.zzz.hathor.base.web.http.BaseResponseBody;
+import com.zzz.hathor.base.web.http.SimpleResponseHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
