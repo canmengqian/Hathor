@@ -3,6 +3,7 @@ package com.zzz.hathor.codemaker.service.impl;
 import cn.hutool.core.codec.Base64;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zzz.hathor.codemaker.domain.vo.query.DataSourceInfoQuery;
+import com.zzz.hathor.codemaker.mapper.hive.RepositoryMapper;
 import com.zzz.hathor.codemaker.service.SpringSqlSessionFactoryBeanService;
 import com.zzz.hathor.codemaker.util.SpringSqlSessionFacoryNamesCache;
 import com.zzz.hathor.codemaker.util.SpringSqlSessionFactoryRefresher;
@@ -12,6 +13,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
 import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -75,6 +77,7 @@ public class SpringSqlSessionFactoryBeanServceImpl implements SpringSqlSessionFa
     public void getMapper(String beanName) throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = (SqlSessionFactoryBean) context.getBean(beanName);
         SqlSessionFactory  factory =sqlSessionFactoryBean.getObject();
-        //factory.openSession()
+        RepositoryMapper mapper =factory.openSession().getMapper(RepositoryMapper.class);
+        mapper.queryTables();
     }
 }
