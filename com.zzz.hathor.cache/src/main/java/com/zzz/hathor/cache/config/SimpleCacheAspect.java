@@ -1,9 +1,12 @@
 package com.zzz.hathor.cache.config;
 
+import java.beans.BeanInfo;
+import java.beans.PropertyEditor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.HashMap;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.zzz.hathor.cache.util.anotation.ExpireType;
 import com.zzz.hathor.cache.util.anotation.SimpleCache;
+import com.zzz.hathor.cache.util.cache.SchedulerCache;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -20,8 +24,29 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.PropertyEditorRegistrar;
+import org.springframework.beans.PropertyEditorRegistry;
+import org.springframework.beans.factory.*;
+import org.springframework.beans.factory.config.*;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.BeanDefinitionReader;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.xml.BeanDefinitionParser;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.format.Formatter;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.event.TransactionalEventListener;
+import org.springframework.transaction.interceptor.TransactionProxyFactoryBean;
+import org.springframework.transaction.interceptor.TransactionalProxy;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+import org.springframework.validation.Errors;
 
 
 @Aspect //AOP 切面
@@ -48,7 +73,7 @@ public class SimpleCacheAspect {
    * 方法执行后
    *
    * @param joinPoint
-   * @param logA
+   * @param
    * @param result
    * @return
    */
@@ -56,6 +81,32 @@ public class SimpleCacheAspect {
   public Object afterReturning(JoinPoint joinPoint, SimpleCache cache, Object result) {
       //System.out.println("执行了afterReturning方法: result=" + result);
 	  //AJAXUtil.success(response, msg);
+    //  ResourceLoader
+     // BeanFactoryAware
+     // BeanPostProcessor
+      //BeanPostProcessor
+     // InitializingBean
+    //  DisposableBean
+     // BeanDefinition
+     // BeanDefinitionCustomizer
+   //   BeanDefinitionParser
+      //BeanDefinitionHolder
+      //BeanDefinitionVisitor
+      //BeanDefinitionReader
+      //BeanDefinitionBuilder
+      //BeanDefinitionRegistry
+      // BeanWrapper
+    //  PropertyEditor
+      //PropertyEditorRegistry
+      //PropertyEditorRegistrar
+      //BeanInfo
+     // PropertyPlaceholderConfigurer
+	  //TransactionDefinition
+	 // TransactionSynchronizationManager
+	  //TransactionalEventListener
+	 // TransactionProxyFactoryBean
+	//  DataSourceUtils
+
       return Void.class;
   }
 
@@ -68,10 +119,10 @@ public class SimpleCacheAspect {
 	  boolean is_exist_key =false;
 	  if(key!=null || key.trim()!="") {
 		  evictKey(cache);
-		  is_exist_key = SimpleCache.getCache().isExist(key);
+		  is_exist_key = SchedulerCache.getCache().isExist(key);
 		
 		if(is_exist_key) {
-			result = SimpleCache.getCache().get(key);
+			result = SchedulerCache.getCache().get(key);
 		}
 	  }
 	  if(result == null ) {
@@ -87,7 +138,7 @@ public class SimpleCacheAspect {
 	try {
 		rs=bean.getClass().getDeclaredMethod(cache.resources().method(), null).invoke(bean, null);
 		if (rs!= null ) {
-			SimpleCache.getCache().put(cache.key(),rs);
+			SchedulerCache.getCache().put(cache.key(),rs);
 		}
 	} catch (IllegalAccessException e) {
 		// TODO Auto-generated catch block
@@ -111,7 +162,7 @@ public class SimpleCacheAspect {
    * 方法执行后 并抛出异常
    *
    * @param joinPoint
-   * @param logAnnotation
+   * @param
    * @param ex
    */
   @AfterThrowing(value = "pointcut() && @annotation(cache)", throwing = "ex")
@@ -147,7 +198,7 @@ public class SimpleCacheAspect {
   }
   
   public void evictKey(SimpleCache cache) {
-	 SimpleCache<String, Object> cacheComp= SimpleCache.getCache();
+	  SchedulerCache<String, Object> cacheComp= SchedulerCache.getCache();
 	  ExpireType type = cache.policy();
 	  switch (type.getType()) {
 		case "TIME":
@@ -158,4 +209,19 @@ public class SimpleCacheAspect {
 			break;
 	}
   }
+
+	public static void main(String[] args) {
+
+			String s1 ="abc";
+			String s2 = s1;
+			String s5 ="abc";
+			String s3 = new String("abc");
+			String s4 = new String("abc1");
+			System.out.println("== comparison : " + (s1 == s5));
+			System.out.println("== comparison : " + (s1 == s2));
+			System.out.println("Using equals method : " + s1.equals(s2));
+			System.out.println("== comparison : " + s3 == s4);
+			System.out.println("Using equals method : " + s3.equals(s4));
+		Integer
+	}
 }
