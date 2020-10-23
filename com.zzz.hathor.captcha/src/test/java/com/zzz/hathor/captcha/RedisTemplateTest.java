@@ -12,10 +12,13 @@ public class RedisTemplateTest extends  BaseTest{
     RedisTemplate redisTemplate ;
     @Test
     public  void  putStr() {
-        for(int  i=0;i<100;i++) {
-            redisTemplate.opsForValue().set(""+i,i+"");
-        }
-       String  val = (String) redisTemplate.opsForValue().get(""+1);
+        String  val = (String) redisTemplate.opsForValue().get(""+1);
         log.info(val);
+        /*for(int  i=0;i<100;i++) {
+            redisTemplate.opsForValue().set(""+i,i+"");
+            String  val = (String) redisTemplate.opsForValue().get(""+1);
+            log.info(val);
+        }*/
+
     }
 }

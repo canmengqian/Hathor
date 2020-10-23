@@ -1,4 +1,4 @@
-package com.zzz.hathor.captcha.domain.entity;
+package com.zzz.hathor.base.web.http;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +20,5 @@ public class BaseResponseBody<T> {
 
     private String code ; //响应码
     private String message; //响应信息
-    private T t;  //响应结果
+    private T data;  //响应结果
 }

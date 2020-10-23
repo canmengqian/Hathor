@@ -21,6 +21,12 @@ spring:
     url: jdbc:sqlite:E:\sqlite\data\captcha.db
   messages:
     basename: static/i18n/messages
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+  application:
+    name: captcha
 mybatis-plus:
   mapper-locations: classpath*:/com/zzz/hathor/captcha/mapper/**/*.xml
   config-location: classpath:/mybatis-config.xml
