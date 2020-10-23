@@ -1,0 +1,30 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: code-maker
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+
+code:
+  maker:
+    datasource:
+      url:  jdbc:sqlite:E:\sqlite\data\captcha.db
+      drivername: org.sqlite.JDBC
+      vender: sqlite
+    architec:
+      controllerpck: controller
+      servicepck: service
+      daosuffix: mapper
+      domainpck: domain
+      orm-type: mybatisplus
+    project:
+      author: zhengzz
+      name: demo
+      modulename: com.zzz.hathor
+      desc: demo
+      permitlombok: false
+mybatis:
+  mapper-locations: classpath:com/zzz/hathor/codemaker/mapper/*.xml
