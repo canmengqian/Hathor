@@ -28,6 +28,7 @@ public class SimpleResponseHandler {
     }
 
     public static BaseResponseBody fail(HttpStatus status, Object  result) {
+
         BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).t(result).build();
         return body;
     }
