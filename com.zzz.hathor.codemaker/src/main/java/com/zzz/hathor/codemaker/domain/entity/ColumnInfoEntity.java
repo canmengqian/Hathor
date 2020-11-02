@@ -17,10 +17,15 @@ import org.springframework.stereotype.Component;
 @Component
 @ToString
 public class ColumnInfoEntity {
-    private String primaryKey;
     private String colName ;
-    private String colType ;
     private String colComment;
-    private Object defaultName;
-    private boolean isAutoincrement;
+    private String colPosition;
+    private String colDefault;
+    private String isNull;
+    private String colType;
+    private String maxLength;
+    private String numPrecision;
+    private String numScala;
+    private String primaryKey;
+    private String extraComment;
 }

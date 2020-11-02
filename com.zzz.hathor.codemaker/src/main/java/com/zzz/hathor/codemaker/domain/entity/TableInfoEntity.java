@@ -19,9 +19,19 @@ import java.util.List;
 @Component
 @ToString
 public class TableInfoEntity {
-    private String schema;
+    private String schemaName;
     private String tableName;
     private String tableComment;
-    private List<ColumnInfoEntity> cols;
+    private String colName ;
+    private String colComment;
+    private String colPosition;
+    private String colDefault;
+    private String isNull;
+    private String colType;
+    private String maxLength;
+    private String numPrecision;
+    private String numScala;
+    private String primaryKey;
+    private String extraComment;
     private String sql;
 }

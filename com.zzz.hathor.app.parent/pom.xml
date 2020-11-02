@@ -21,10 +21,6 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
         <dependency>
@@ -84,8 +80,20 @@
             <artifactId>hutool-all</artifactId>
             <version>5.3.10</version>
         </dependency>
-    </dependencies>
+        <!--markdown 解析框架-->
+        <!-- https://mvnrepository.com/artifact/org.pegdown/pegdown -->
+        <dependency>
+            <groupId>org.pegdown</groupId>
+            <artifactId>pegdown</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.9.0</version>
+        </dependency>
 
+    </dependencies>
     <build>
 
     </build>

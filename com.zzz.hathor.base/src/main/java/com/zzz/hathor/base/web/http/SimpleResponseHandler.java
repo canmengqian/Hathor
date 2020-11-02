@@ -1,6 +1,4 @@
-package com.zzz.hathor.captcha.util;
-
-import com.zzz.hathor.captcha.domain.entity.BaseResponseBody;
+package com.zzz.hathor.base.web.http;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -11,25 +9,25 @@ import org.springframework.http.HttpStatus;
  * @Version 1.0.0
  **/
 public class SimpleResponseHandler {
-   public  static  BaseResponseBody fail(String code ,String msg) {
+   public  static BaseResponseBody fail(String code , String msg) {
        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).build();
        return body;
    }
 
    public static BaseResponseBody fail(String code, String msg, Object  result) {
-       BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).t(result).build();
+       BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).data(result).build();
        return  body;
    }
 
 
     public static BaseResponseBody fail(String code ,String msg ,Throwable throwable) {
-        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).t(throwable.getMessage()).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).data(throwable.getMessage()).build();
         return  body;
     }
 
     public static BaseResponseBody fail(HttpStatus status, Object  result) {
 
-        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).t(result).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).data(result).build();
         return body;
     }
 
@@ -39,12 +37,12 @@ public class SimpleResponseHandler {
     }
 
     public static BaseResponseBody success(String code ,String msg,Object  result) {
-        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).t(result).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(code).message(msg).data(result).build();
         return body;
     }
 
     public static BaseResponseBody success(HttpStatus status, Object  result) {
-        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).t(result).build();
+        BaseResponseBody body = BaseResponseBody.builder().code(String.valueOf(status.value())).message(status.getReasonPhrase()).data(result).build();
         return body;
     }
 

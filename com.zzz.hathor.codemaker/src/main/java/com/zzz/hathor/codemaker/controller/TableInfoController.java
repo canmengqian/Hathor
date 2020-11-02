@@ -3,7 +3,6 @@ package com.zzz.hathor.codemaker.controller;
 import com.zzz.hathor.base.web.http.BaseResponseBody;
 import com.zzz.hathor.codemaker.domain.vo.model.TableModel;
 import com.zzz.hathor.codemaker.domain.vo.query.DataSourceInfoQuery;
-import com.zzz.hathor.codemaker.util.SpringSqlSessionFactoryRegistry;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.AnnotatedGenericBeanDefinition;

@@ -1,24 +1,17 @@
 package com.zzz.hathor.codemaker.service.impl;
 
-import cn.hutool.core.codec.Base64;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zzz.hathor.codemaker.domain.vo.query.DataSourceInfoQuery;
-import com.zzz.hathor.codemaker.mapper.hive.RepositoryMapper;
 import com.zzz.hathor.codemaker.service.SpringSqlSessionFactoryBeanService;
-import com.zzz.hathor.codemaker.util.SpringSqlSessionFacoryNamesCache;
-import com.zzz.hathor.codemaker.util.SpringSqlSessionFactoryRefresher;
 import com.zzz.hathor.codemaker.util.driver.DriverRegistry;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Repository;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.io.IOException;
 
 /**
  * @ClassName SpringSqlSessionFactoryBeanServceImpl
@@ -33,13 +26,18 @@ public class SpringSqlSessionFactoryBeanServceImpl implements SpringSqlSessionFa
     @Resource
     ApplicationContext context;
     @Override
-    public void assemberSqlSessionFactoryBean(DataSourceInfoQuery dataSourceInfoQuery) {
-
+    public SqlSessionFactoryBean assemberSqlSessionFactoryBean(DataSourceInfoQuery query,String beanName) throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(setDataSource(dataSourceInfoQuery));
-        SpringSqlSessionFactoryRefresher factoryRefresher = new SpringSqlSessionFactoryRefresher(context);
-        String beanName = setBeanName(dataSourceInfoQuery);
-        factoryRefresher.refresh(beanName,sqlSessionFactoryBean);
+        sqlSessionFactoryBean.setDataSource(setDataSource(query));// 设置数据源
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(new PathMatchingResourcePatternResolver());
+        org.springframework.core.io.Resource[] resources = resolver.getResources(getMapperLocation(query.getVender().vender));
+        sqlSessionFactoryBean.setMapperLocations(resources);
+        // 设置刷新器
+        //SpringSqlSessionFactoryRefresher factoryRefresher = new SpringSqlSessionFactoryRefresher(context);
+        // 设置bean
+        //factoryRefresher.refresh(beanName,sqlSessionFactoryBean);
+       return sqlSessionFactoryBean;
+
     }
 
 
@@ -59,25 +57,10 @@ public class SpringSqlSessionFactoryBeanServceImpl implements SpringSqlSessionFa
         return  dataSource;
     }
 
-    private String setBeanName(DataSourceInfoQuery dataSourceInfoQuery) {
-        StringBuilder builder = new StringBuilder("SqlSessionFactoryBean@");
-        builder.append(dataSourceInfoQuery.getVender());
-        builder.append("@");
-        builder.append(dataSourceInfoQuery.getUrl());
-        builder.append("@");
-        String userName = dataSourceInfoQuery.getUsername();
-        if(!StringUtils.isEmpty(userName)) {
-            builder.append(userName);
-        }
-        String beanName = Base64.encode(builder.toString());
-        SpringSqlSessionFacoryNamesCache.addName(beanName);
-        return beanName;
+
+
+    private String getMapperLocation(String vender) {
+        return MAPPER_LOCATION_PREFIX+vender+MAPPER_LOCATION_SUFFIX;
     }
 
-    public void getMapper(String beanName) throws Exception {
-        SqlSessionFactoryBean sqlSessionFactoryBean = (SqlSessionFactoryBean) context.getBean(beanName);
-        SqlSessionFactory  factory =sqlSessionFactoryBean.getObject();
-        RepositoryMapper mapper =factory.openSession().getMapper(RepositoryMapper.class);
-        mapper.queryTables();
-    }
 }

@@ -3,28 +3,18 @@ package com.zzz.hathor.codemaker.controller;
 import com.zzz.hathor.base.web.http.BaseResponseBody;
 import com.zzz.hathor.base.web.http.SimpleResponseHandler;
 import com.zzz.hathor.codemaker.domain.vo.query.DataSourceInfoQuery;
-import com.zzz.hathor.codemaker.domain.vo.query.ProjectGennerInfo;
 import com.zzz.hathor.codemaker.service.SpringSqlSessionFactoryBeanService;
-import com.zzz.hathor.codemaker.util.SpringSqlSessionFacoryNamesCache;
-import org.springframework.beans.factory.BeanFactory;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinitionVisitor;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.support.FactoryBeanRegistrySupport;
-import org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
-import org.springframework.context.support.AbstractRefreshableApplicationContext;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletContext;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @ClassName BeansController
@@ -35,30 +25,27 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("bean")
+@Api(protocols = "http" ,value = "刷新sessionFactoryBean")
 public class BeansController {
     @Resource
     ApplicationContext context;
 
     @Autowired
     SpringSqlSessionFactoryBeanService factoryBeanService;
-    @Autowired
-   ProjectGennerInfo ProjectGennerInfo;
-    @GetMapping(value = "/query/all")
-    public BaseResponseBody<List<String>> queryBeans() {
-     return   SimpleResponseHandler.success(HttpStatus.OK,Arrays.asList(context.getBeanDefinitionNames()));
+
+    @ApiOperation(value = "查询Bean对象", notes = "", httpMethod = "GET")
+    @GetMapping(value = "/query")
+    public BaseResponseBody queryBeans(@RequestParam(value = "type",required = false)String type ,@RequestParam(value = "name",required = false)String name   ) throws ClassNotFoundException {
+        List<String> params =Arrays.asList(new String[]{type,name}).stream().filter(e->e!=null).collect(Collectors.toList());
+        List<String> beanNames =  Arrays.asList(context.getBeanDefinitionNames());
+       return SimpleResponseHandler.success("200","查询成功",beanNames);
     }
-    @GetMapping(value = "/query/sqlsessionfactorybean")
-    public  BaseResponseBody<List<Object>> querySqlSessionFactoryBeans() {
-        return   SimpleResponseHandler.success(HttpStatus.OK,Arrays.asList(SpringSqlSessionFacoryNamesCache.getAllName()));
+
+    @ApiOperation(value = "刷新sessionFactory")
+    @PostMapping(value = "/refresh")
+    public BaseResponseBody refreshSqlSessionFactory(@RequestParam(value = "foceRefresh") Boolean foce,  DataSourceInfoQuery dataSourceInfoQuery) throws IOException {
+      /* String beanName =  factoryBeanService.assemberSqlSessionFactoryBean(dataSourceInfoQuery);*/
+        return SimpleResponseHandler.success("200","查询成功","");
     }
-    @PutMapping(value = "/add/")
-    public BaseResponseBody refreshBean(DataSourceInfoQuery query) {
-        factoryBeanService.assemberSqlSessionFactoryBean(query);
-        return  SimpleResponseHandler.success(HttpStatus.OK,"OK");
-    }
-   /* @PutMapping(value = "/refresh/all")
-    public BaseResponseBody refreshAll() {
-        WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(ServletActionContext.getServletContext());
-        ((AbstractRefreshableApplicationContext) context).refresh();
-    }*/
+
 }

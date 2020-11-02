@@ -10,11 +10,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 public class DicDataMapperTest {
 
-    @Autowired
-    DicDataMapper mapper;
+
     @org.junit.Test
     public void queryByCondition() {
-        System.out.println(mapper.toString());
-        mapper.queryByCondition();
+
     }
 }

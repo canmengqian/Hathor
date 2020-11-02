@@ -7,7 +7,10 @@ spring:
     admin:
       client:
         url: http://localhost:8000
-
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java #重启目录
 code:
   maker:
     datasource:

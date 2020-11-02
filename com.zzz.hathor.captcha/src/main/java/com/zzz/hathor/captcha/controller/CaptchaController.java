@@ -64,7 +64,7 @@ public class CaptchaController {
        BaseResponseBody<CaptchaVerify> resp = new BaseResponseBody<>();
        log.info(verify.toString());
         CaptchaVerify verifyResult = service.verifyCode(verify);
-        return SimpleResponseHandler.success(HttpStatus.OK,resp.builder().t(verifyResult).code("200").message("验证成功").build());
+        return SimpleResponseHandler.success(HttpStatus.OK,resp.builder().data(verifyResult).code("200").message("验证成功").build());
     }
 
 

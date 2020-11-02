@@ -27,5 +27,7 @@ public class ConsumerDetailInfo {
 
     private String createTime ; // 消费单创建时间
 
+    private String currencyType ;// 货币类型
+
 
 }
