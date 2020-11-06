@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="com.zzz.hathor.caffine:war exploded">
+    <output-path>$PROJECT_DIR$/com.zzz.hathor.caffine/target/caffine</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>com.zzz.hathor.caffine</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="com.zzz.hathor.caffine" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.github.ben-manes.caffeine:caffeine:2.8.4" />
+          <element id="library" level="project" name="Maven: org.checkerframework:checker-qual:3.4.0" />
+          <element id="library" level="project" name="Maven: com.google.errorprone:error_prone_annotations:2.3.4" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/com.zzz.hathor.caffine/target/caffine/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="com.zzz.hathor.caffine/web/Web" />
+    </root>
+  </artifact>
+</component>

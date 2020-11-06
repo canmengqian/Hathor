@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="com.zzz.hathor.gateway.zuul" />
+        <module name="com.zzz.hathor.nacos.consumer" />
+        <module name="com.zzz.hathor.base" />
+        <module name="com.zzz.hathor.captcha" />
+        <module name="demo" />
+        <module name="com.zzz.hathor.nacos.config" />
+        <module name="com.zzz.hathor.httptest.ui" />
+        <module name="com.zzz.hathor.cache" />
+        <module name="com.zzz.hathor.adminserver" />
+        <module name="com.zzz.hathor.codemaker" />
+        <module name="com.zzz.hathor.consumernote.feignclient" />
+        <module name="com.zzz.hathor.cloud.config" />
+        <module name="com.zzz.hathor.nacos.provider" />
+        <module name="com.zzz.hathor.cloud.test.configclient" />
+        <module name="com.zzz.hathor.captcha.webflux" />
+        <module name="com.zzz.hathor.comsumer-note" />
+        <module name="com.zzz.hathor.eurekaserver" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.zzz.hathor.adminserver" target="1.8" />
+      <module name="com.zzz.hathor.app.parent" target="1.8" />
+      <module name="com.zzz.hathor.base" target="1.8" />
+      <module name="com.zzz.hathor.cache" target="1.8" />
+      <module name="com.zzz.hathor.caffine" target="1.7" />
+      <module name="com.zzz.hathor.captcha" target="1.8" />
+      <module name="com.zzz.hathor.captcha.webflux" target="1.8" />
+      <module name="com.zzz.hathor.cloud.config" target="1.8" />
+      <module name="com.zzz.hathor.cloud.test.configclient" target="11" />
+      <module name="com.zzz.hathor.codemaker" target="1.8" />
+      <module name="com.zzz.hathor.comsumer-note" target="1.8" />
+      <module name="com.zzz.hathor.consumernote.feignclient" target="1.8" />
+      <module name="com.zzz.hathor.eurekaserver" target="1.8" />
+      <module name="com.zzz.hathor.gateway.zuul" target="11" />
+      <module name="com.zzz.hathor.httptest.ui" target="1.8" />
+      <module name="com.zzz.hathor.nacos.config" target="11" />
+      <module name="com.zzz.hathor.nacos.consumer" target="1.8" />
+      <module name="com.zzz.hathor.nacos.provider" target="1.8" />
+      <module name="demo" target="1.8" />
+      <module name="demo1" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="com.zzz.hathor.adminserver" options="-parameters" />
+      <module name="com.zzz.hathor.base" options="-parameters" />
+      <module name="com.zzz.hathor.cache" options="-parameters" />
+      <module name="com.zzz.hathor.captcha" options="-parameters" />
+      <module name="com.zzz.hathor.captcha.webflux" options="-parameters" />
+      <module name="com.zzz.hathor.cloud.config" options="-parameters" />
+      <module name="com.zzz.hathor.cloud.test.configclient" options="-parameters" />
+      <module name="com.zzz.hathor.codemaker" options="-parameters" />
+      <module name="com.zzz.hathor.comsumer-note" options="-parameters" />
+      <module name="com.zzz.hathor.consumernote.feignclient" options="-parameters" />
+      <module name="com.zzz.hathor.eurekaserver" options="-parameters" />
+      <module name="com.zzz.hathor.gateway.zuul" options="-parameters" />
+      <module name="com.zzz.hathor.httptest.ui" options="-parameters" />
+      <module name="com.zzz.hathor.nacos.config" options="-parameters" />
+      <module name="com.zzz.hathor.nacos.consumer" options="-parameters" />
+      <module name="com.zzz.hathor.nacos.provider" options="-parameters" />
+      <module name="demo" options="-parameters" />
+      <module name="demo1" options="-parameters" />
+    </option>
+  </component>
+</project>

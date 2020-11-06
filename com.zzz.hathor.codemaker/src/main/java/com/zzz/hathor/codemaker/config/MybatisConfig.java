@@ -44,7 +44,7 @@ public class MybatisConfig {
     @Bean("hikarysource")
     public DataSource createDataSource( DataSourceProperty dataSourceProperty) throws SQLException {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setLoginTimeout(60);
+        /*dataSource.setLoginTimeout(60);
         dataSource.setMaximumPoolSize(8);
         dataSource.setMinimumIdle(1);
 
@@ -58,7 +58,7 @@ public class MybatisConfig {
         }
 
         dataSource.setDriverClassName(dataSourceProperty.getDrivername());
-        dataSource.setJdbcUrl(dataSourceProperty.getUrl());
+        dataSource.setJdbcUrl(dataSourceProperty.getUrl());*/
         return dataSource;
     }
     @Bean("sqlSessionFactoryBean")

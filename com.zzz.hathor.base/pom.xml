@@ -5,14 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.3.RELEASE</version>
+        <version>2.3.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zzz.hathor.base</groupId>
     <artifactId>web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>com.zzz.hathor.base.web</name>
+    <name>com.zzz.hathor.base</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

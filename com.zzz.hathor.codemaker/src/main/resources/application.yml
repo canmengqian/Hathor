@@ -2,7 +2,7 @@ server:
   port: 9002
 spring:
   application:
-    name: code-maker
+    name: codemaker
   boot:
     admin:
       client:
@@ -31,3 +31,12 @@ code:
       permitlombok: false
 mybatis:
   mapper-locations: classpath:com/zzz/hathor/codemaker/mapper/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+    fetch-registry: true
+ribbon:
+  eureka:
+    enabled: true

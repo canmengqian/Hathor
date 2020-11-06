@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/com.zzz.hathor.caffine" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/com.zzz.hathor.adminserver/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.captcha/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.cache/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.comsumer-note/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.app.parent/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.base/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.httptest.ui/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.codemaker/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.gateway.zuul/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.eurekaserver/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.cloud.config/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.cloud.test.configclient/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.nacos.config/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.nacos.provider/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.nacos.consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.captcha.webflux/pom.xml" />
+        <option value="$PROJECT_DIR$/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.consumernote.feignclient/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>

@@ -1,0 +1,20 @@
+server:
+  port: 10002
+spring:
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000
+management:
+  endpoint:
+    service-registry:
+      enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/

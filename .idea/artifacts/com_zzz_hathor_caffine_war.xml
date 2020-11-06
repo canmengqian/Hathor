@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="com.zzz.hathor.caffine:war">
+    <output-path>$PROJECT_DIR$/com.zzz.hathor.caffine/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>com.zzz.hathor.caffine</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="caffine.war">
+      <element id="artifact" artifact-name="com.zzz.hathor.caffine:war exploded" />
+    </root>
+  </artifact>
+</component>
