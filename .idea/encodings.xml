@@ -5,7 +5,6 @@
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.app.parent" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.base" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.cache" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/com.zzz.hathor.caffine" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.captcha" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.captcha.webflux" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.cloud.config" charset="UTF-8" />
@@ -13,6 +12,7 @@
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.codemaker" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.comsumer-note" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.consumernote.feignclient" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/com.zzz.hathor.document" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.eurekaserver" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.gateway.zuul" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.httptest.ui" charset="UTF-8" />
@@ -21,6 +21,5 @@
     <file url="file://$PROJECT_DIR$/com.zzz.hathor.nacos.provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/demo1" charset="UTF-8" />
   </component>
 </project>

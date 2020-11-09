@@ -17,11 +17,12 @@
         <module name="com.zzz.hathor.httptest.ui" />
         <module name="com.zzz.hathor.cache" />
         <module name="com.zzz.hathor.adminserver" />
+        <module name="com.zzz.hathor.document" />
         <module name="com.zzz.hathor.codemaker" />
         <module name="com.zzz.hathor.consumernote.feignclient" />
-        <module name="com.zzz.hathor.cloud.config" />
-        <module name="com.zzz.hathor.nacos.provider" />
         <module name="com.zzz.hathor.cloud.test.configclient" />
+        <module name="com.zzz.hathor.nacos.provider" />
+        <module name="com.zzz.hathor.cloud.config" />
         <module name="com.zzz.hathor.captcha.webflux" />
         <module name="com.zzz.hathor.comsumer-note" />
         <module name="com.zzz.hathor.eurekaserver" />
@@ -40,13 +41,14 @@
       <module name="com.zzz.hathor.codemaker" target="1.8" />
       <module name="com.zzz.hathor.comsumer-note" target="1.8" />
       <module name="com.zzz.hathor.consumernote.feignclient" target="1.8" />
+      <module name="com.zzz.hathor.document" target="11" />
       <module name="com.zzz.hathor.eurekaserver" target="1.8" />
       <module name="com.zzz.hathor.gateway.zuul" target="11" />
       <module name="com.zzz.hathor.httptest.ui" target="1.8" />
       <module name="com.zzz.hathor.nacos.config" target="11" />
       <module name="com.zzz.hathor.nacos.consumer" target="1.8" />
       <module name="com.zzz.hathor.nacos.provider" target="1.8" />
-      <module name="demo" target="1.8" />
+      <module name="demo" target="11" />
       <module name="demo1" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -62,6 +64,7 @@
       <module name="com.zzz.hathor.codemaker" options="-parameters" />
       <module name="com.zzz.hathor.comsumer-note" options="-parameters" />
       <module name="com.zzz.hathor.consumernote.feignclient" options="-parameters" />
+      <module name="com.zzz.hathor.document" options="-parameters" />
       <module name="com.zzz.hathor.eurekaserver" options="-parameters" />
       <module name="com.zzz.hathor.gateway.zuul" options="-parameters" />
       <module name="com.zzz.hathor.httptest.ui" options="-parameters" />

@@ -25,10 +25,11 @@
         <option value="$PROJECT_DIR$/com.zzz.hathor.nacos.provider/pom.xml" />
         <option value="$PROJECT_DIR$/com.zzz.hathor.nacos.consumer/pom.xml" />
         <option value="$PROJECT_DIR$/com.zzz.hathor.captcha.webflux/pom.xml" />
-        <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/com.zzz.hathor.consumernote.feignclient/pom.xml" />
+        <option value="$PROJECT_DIR$/com.zzz.hathor.document/pom.xml" />
+        <option value="$PROJECT_DIR$/demo/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
